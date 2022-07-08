@@ -1,0 +1,47 @@
+version: '3'
+services:
+  app01:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      fixed_compose_network:
+        ipv4_address: 10.18.0.24
+    tty: true
+    volumes:
+      - .:/app
+    environment:
+      - SHEET_ID=${SHEET_ID}
+      - GOOGLE_SERVICE_ACCOUNT_EMAIL=${GOOGLE_SERVICE_ACCOUNT_EMAIL}
+      - GOOGLE_PRIVATE_KEY=${GOOGLE_PRIVATE_KEY}
+
+
+  db01:
+    build: 
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    networks:
+      fixed_compose_network:
+        ipv4_address: 10.18.0.25
+    env_file:
+      - .env
+    volumes:
+      - ./db/my.cnf:/etc/mysql/conf.d/mysql.cnf
+      - ./db/init_db:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=Asia/Tokyo
+
+networks:
+  fixed_compose_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.18.0.0/24

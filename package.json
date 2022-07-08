@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "dotenv": "^16.0.1",
+    "google-spreadsheet": "^3.3.0",
+    "mysql2": "^2.3.3",
+    "promise-mysql": "^5.2.0",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "@types/google-spreadsheet": "^3.2.3",
+    "@types/mysql": "^2.15.21",
+    "@types/node": "^18.0.1",
+    "@types/yargs": "^17.0.10"
+  }
+}
