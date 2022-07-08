@@ -559,5 +559,4 @@ class SheetData {
   }
 }
 
-
 SheetData.get();

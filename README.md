@@ -20,7 +20,10 @@ docker-compose down -v
 docker exec -it spreadsheet-db01-1 bash
 
 ## 実行コマンドの確認
-docker exec -it spreadsheet-app01-1 npx ts-node /app/app/src/get/index3.ts --help
+docker exec -it spreadsheet-app01-1 npx ts-node /app/app/src/get/getssdatas.ts --help
 
 ## 1月分データインサート
-docker exec -it spreadsheet-app01-1 npx ts-node /app/app/src/get/index3.ts -m 1 
+docker exec -it spreadsheet-app01-1 npx ts-node /app/app/src/get/getssdatas.ts -m 1 
+
+## DB データSELECT
+docker exec -it spreadsheet-app01-1 npx ts-node /app/app/src/get/getdbdatas.ts

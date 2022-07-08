@@ -44,4 +44,3 @@ export function validay(day:number){
         console.log('day is ok')
     }
 }
-// dbinsert('6/20','1','test_db');
